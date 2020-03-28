@@ -7,13 +7,30 @@
 		"vscode": "^1.43.0"
 	},
 	"categories": [ "Other" ],
-	"activationEvents": [ "onCommand:extension.helloWorld" ],
+	"activationEvents": [ "onCommand:extension.saveToSnippy" ],
 	"main": "./extension.js",
 	"contributes": {
 		"commands": [
 			{
-				"command": "extension.helloWorld",
-				"title": "Hello World"
+				"command": "extension.saveToSnippy",
+				"title": "Save This Snippet"
+			}
+		],
+		"menus": {
+			"editor/context": [
+				{
+					"command": "extension.saveToSnippy",
+					"when": "editorHasSelection",
+					"group": "myExtensionGroup@2"
+				}
+			]
+		},
+		"keybindings": [
+			{
+				"command": "extension.saveToSnippy",
+				"key": "ctrl+alt+s",
+				"mac": "cmd+alt+s",
+				"when": "editorHasSelection"
 			}
 		]
 	},
