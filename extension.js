@@ -281,11 +281,7 @@ function activate(context) {
   //--------PostingSnippetOnSnippy---------------
   async function postUserSnippet() {
     var snippyTitle, snippyDescription, snippyType;
-    if (checkUserToken === undefined) {
-      return vscode.window.showErrorMessage(
-        "You need to be logged in to be able to post to Snippy (Open context memu -> 'Snippy-- Login')."
-      );
-    }
+
     snippyTitle = await snippetPostTitle();
     snippyDescription = await snippetPostDescription();
     snippyType = await snippetPostType();
