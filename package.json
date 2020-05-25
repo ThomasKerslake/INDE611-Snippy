@@ -1,53 +1,78 @@
 {
-	"name": "snippy",
-	"displayName": "Snippy",
-	"description": "Snippy is your very own code bank that is built straight into a VS code extension.",
-	"version": "0.0.1",
-	"engines": {
-		"vscode": "^1.43.0"
-	},
-	"categories": [ "Other" ],
-	"activationEvents": [ "onCommand:extension.saveToSnippy" ],
-	"main": "./extension.js",
-	"contributes": {
-		"commands": [
-			{
-				"command": "extension.saveToSnippy",
-				"title": "Save This Snippet"
-			}
-		],
-		"menus": {
-			"editor/context": [
-				{
-					"command": "extension.saveToSnippy",
-					"when": "editorHasSelection",
-					"group": "myExtensionGroup@2"
-				}
-			]
-		},
-		"keybindings": [
-			{
-				"command": "extension.saveToSnippy",
-				"key": "ctrl+alt+s",
-				"mac": "cmd+alt+s",
-				"when": "editorHasSelection"
-			}
-		]
-	},
-	"scripts": {
-		"lint": "eslint .",
-		"pretest": "npm run lint",
-		"test": "node ./test/runTest.js"
-	},
-	"devDependencies": {
-		"@types/glob": "^7.1.1",
-		"@types/mocha": "^7.0.1",
-		"@types/node": "^12.11.7",
-		"@types/vscode": "^1.43.0",
-		"eslint": "^6.8.0",
-		"glob": "^7.1.6",
-		"mocha": "^7.0.1",
-		"typescript": "^3.7.5",
-		"vscode-test": "^1.3.0"
-	}
+  "name": "snippy",
+  "displayName": "Snippy",
+  "description": "Snippy is your very own code bank that is built straight into a VS code extension.",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.43.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "*"
+  ],
+  "main": "./extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "extension.saveToSnippy",
+        "title": "Snippy-- Save locally"
+      },
+      {
+        "command": "extension.snippyLogin",
+        "title": "Snippy-- Login"
+      },
+      {
+        "command": "extension.snippyLogout",
+        "title": "Snippy-- Logout"
+      },
+      {
+        "command": "extension.snippyPost",
+        "title": "Snippy-- Post to Snippy"
+      }
+    ],
+    "menus": {
+      "editor/context": [
+        {
+          "command": "extension.saveToSnippy",
+          "when": "editorHasSelection",
+          "group": "myExtensionGroup@2"
+        },
+        {
+          "command": "extension.snippyPost",
+          "when": "editorHasSelection",
+          "group": "myExtensionGroup@2"
+        }
+      ]
+    },
+    "keybindings": [
+      {
+        "command": "extension.saveToSnippy",
+        "key": "ctrl+alt+s",
+        "mac": "cmd+alt+s",
+        "when": "editorHasSelection"
+      }
+    ]
+  },
+  "scripts": {
+    "lint": "eslint .",
+    "pretest": "npm run lint",
+    "test": "node ./test/runTest.js"
+  },
+  "devDependencies": {
+    "@types/glob": "^7.1.1",
+    "@types/mocha": "^7.0.1",
+    "@types/node": "^12.11.7",
+    "@types/vscode": "^1.43.0",
+    "eslint": "^6.8.0",
+    "glob": "^7.1.6",
+    "mocha": "^7.0.1",
+    "typescript": "^3.7.5",
+    "vscode-test": "^1.3.0"
+  },
+  "dependencies": {
+    "axios": "^0.19.2",
+    "jwt-decode": "^2.2.0"
+  }
 }
