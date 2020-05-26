@@ -120,7 +120,6 @@ function composeSnippet(codeSnippet, tabID, description, codeScope) {
     .replace(/\r/g, "")
     .replace(/\\/g, "\\\\")
     .replace(/"/g, '\\"')
-    .replace(/\$/g, "\\\\$")
     .split("\n");
   const sanitisedSnippetLength = sanitisedSnippet.length;
 
@@ -243,7 +242,7 @@ async function writeSnippetLocal() {
         `{ ${newFileCreation} }`,
         (err) => {
           if (err) {
-            console.error(err);
+            //console.error(err);
             return vscode.window.showErrorMessage(
               "Failed to create snippet file!"
             );
@@ -313,7 +312,7 @@ function activate(context) {
       axios
         .post("/snip", newSnippetPost)
         .then((res) => {
-          console.log(res);
+          //console.log(res);
           vscode.window.showInformationMessage("Posted to Snippy!");
         })
         .catch((err) => {
@@ -342,11 +341,10 @@ function activate(context) {
         .post("/login", userData)
         .then((res) => {
           setHeaderForAuthorization(res.data.token);
-          console.log(res.data.token);
           vscode.window.showInformationMessage("Successfully logged in!");
         })
         .catch((err) => {
-          console.log(err);
+          //console.log(err);
           return vscode.window.showErrorMessage(
             "Incorrect Login credentials / error"
           );
